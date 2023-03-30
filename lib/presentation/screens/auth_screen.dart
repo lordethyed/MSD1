@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msd1/presentation/screens/bottom_navigation.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -83,7 +84,12 @@ class _AuthScreenState extends State<AuthScreen> {
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF4D67C3), // Background color
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BottomScreen()),
+                  );
+                },
                 child: const Text(
                   'Войти',
                   style: TextStyle(
@@ -96,7 +102,12 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const BottomScreen()),
+                // );
+              },
               child: const Text(
                 "забыли пароль?",
                 style: TextStyle(
