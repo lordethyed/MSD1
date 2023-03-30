@@ -30,9 +30,26 @@ class _AuthScreenState extends State<AuthScreen> {
                 fontSize: 24,
               ),
             ),
+            const SizedBox(
+              height: 44,
+            ),
             TextFormField(
               controller: loginController,
-              decoration: const InputDecoration(labelText: 'Логин'),
+              decoration: const InputDecoration(
+                hintText: "Логин",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: Color(0xFF748DE8),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: Color(0xFF748DE8),
+                  ),
+                ),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -40,13 +57,27 @@ class _AuthScreenState extends State<AuthScreen> {
             TextFormField(
               controller: passwordController,
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Пароль'),
+              decoration: const InputDecoration(
+                hintText: "Пароль",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: Color(0xFF748DE8),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: Color(0xFF748DE8),
+                  ),
+                ),
+              ),
             ),
             const SizedBox(
               height: 33,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width-40,
+              width: MediaQuery.of(context).size.width - 40,
               height: 52,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -54,7 +85,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 onPressed: () {},
                 child: const Text(
-                    'Войти',
+                  'Войти',
                   style: TextStyle(
                     fontFamily: "Roboto",
                     color: Colors.white,
