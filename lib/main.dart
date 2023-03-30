@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:msd1/routing/routing_const.dart';
+import 'package:msd1/routing/routes.dart';
 import 'presentation/screens/auth_screen.dart';
 
 void main() {
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: (settings) => RouterProject.generateRoute(settings),
+      initialRoute: AuthRoute,
       title: '-=MSD1=-',
       theme: ThemeData(
         primarySwatch: Colors.blue,

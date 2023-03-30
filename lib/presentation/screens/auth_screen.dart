@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:msd1/presentation/screens/bottom_navigation.dart';
-
+import 'package:dio/dio.dart';
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
@@ -9,10 +9,11 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  @override
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final dio = Dio();
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -84,11 +85,27 @@ class _AuthScreenState extends State<AuthScreen> {
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF4D67C3), // Background color
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BottomScreen()),
-                  );
+                onPressed: () async {
+                  try {
+                    Response response = await dio.post(
+                      'http://uvrcloud.kz/login.php?auth=1',
+                      data: {
+                        'login': loginController.text,
+                        'password': passwordController.text,
+                      },
+                    );
+
+                    if (kDebugMode) {
+                      print(response);
+                    }
+                    Navigator.pushReplacementNamed(context, MainRoute);
+                  }on DioError catch (e) {
+                    if (kDebugMode) {
+                      print(e.response!.data);
+                    }
+                    rethrow;
+                  }
+
                 },
                 child: const Text(
                   'Войти',
