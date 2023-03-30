@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+
+import '../../routing/routing_const.dart';
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
@@ -98,7 +100,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     if (kDebugMode) {
                       print(response);
                     }
-                    Navigator.pushReplacementNamed(context, MainRoute);
+                    Navigator.pushReplacementNamed(context, HomeRoute);
                   }on DioError catch (e) {
                     if (kDebugMode) {
                       print(e.response!.data);
