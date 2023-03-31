@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:msd1/routing/routing_const.dart';
 import '../presentation/screens/auth_screen.dart';
+import '../presentation/screens/bottom_navigation.dart';
 import '../presentation/screens/download_screen.dart';
 import '../presentation/screens/home_screen.dart';
 import '../presentation/screens/magazine_screen.dart';
@@ -14,6 +15,11 @@ class RouterProject {
         return CupertinoPageRoute(
           settings: routeSettings,
           builder: (_) => const HomeScreen(),
+        );
+      case BottomRoute:
+        return CupertinoPageRoute(
+          settings: routeSettings,
+          builder: (_) => const BottomScreen(),
         );
       case AuthRoute:
         return CupertinoPageRoute(

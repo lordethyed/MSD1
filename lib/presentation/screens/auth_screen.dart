@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:msd1/presentation/screens/bottom_navigation.dart';
+import 'package:http/http.dart' as http;
 import '../../routing/routing_const.dart';
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -14,6 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final dio = Dio();
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             TextFormField(
               controller: passwordController,
-              obscureText: true,
+              //obscureText: true,
               decoration: const InputDecoration(
                 hintText: "Пароль",
                 border: OutlineInputBorder(
@@ -89,6 +95,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 onPressed: () async {
                   try {
+                    dio.options.headers['content-Type'] = 'application/x-www-form-urlencoded';
                     Response response = await dio.post(
                       'http://uvrcloud.kz/login.php?auth=1',
                       data: {
@@ -100,7 +107,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     if (kDebugMode) {
                       print(response);
                     }
-                    Navigator.pushReplacementNamed(context, HomeRoute);
+                    Navigator.pushReplacementNamed(context, BottomRoute);
                   }on DioError catch (e) {
                     if (kDebugMode) {
                       print(e.response!.data);
@@ -122,11 +129,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, HomeRoute);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const BottomScreen()),
-                // );
+                // Navigator.pushReplacementNamed(context, BottomRoute);
               },
               child: const Text(
                 "забыли пароль?",

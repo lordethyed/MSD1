@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:msd1/presentation/screens/download_screen.dart';
 import 'package:msd1/presentation/screens/home_screen.dart';
+import 'package:msd1/presentation/screens/magazine_screen.dart';
+import 'package:msd1/presentation/screens/user_screen.dart';
 
 class BottomScreen extends StatefulWidget {
   const BottomScreen({Key? key}) : super(key: key);
@@ -13,9 +16,9 @@ class _BottomScreenState extends State<BottomScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    DownloadScreen(),
+    MagazineScreen(),
+    UserScreen(),
   ];
   void _onItemTapped(int index) {
     setState(() {
