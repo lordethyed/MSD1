@@ -1,12 +1,7 @@
-import 'dart:convert';
-import 'dart:developer';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:msd1/presentation/screens/bottom_navigation.dart';
-import 'package:http/http.dart' as http;
 import '../../routing/routing_const.dart';
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -104,10 +99,10 @@ class _AuthScreenState extends State<AuthScreen> {
                       },
                     );
 
-                    if (kDebugMode) {
-                      print(response);
+                    if(response.statusCode == 200){
+                      Navigator.pushReplacementNamed(context, BottomRoute);
                     }
-                    Navigator.pushReplacementNamed(context, BottomRoute);
+
                   }on DioError catch (e) {
                     if (kDebugMode) {
                       print(e.response!.data);
