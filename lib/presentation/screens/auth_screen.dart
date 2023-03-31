@@ -122,6 +122,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             TextButton(
               onPressed: () {
+                Navigator.pushReplacementNamed(context, HomeRoute);
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(builder: (context) => const BottomScreen()),
